@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const authRoute = require("./routes/authRoutes")
+const placesRoute = require("./routes/placesRoutes")
 const connectDB = require('./config/db')
 
 const port = process.env.PORT || 8000
@@ -22,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded( {extended: false}))
 
 app.use("/api/auth", authRoute);
+app.use("/api/places", placesRoute);
+
 
 
 app.use((err, req, res, next) => {
